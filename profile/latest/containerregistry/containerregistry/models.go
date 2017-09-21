@@ -21,6 +21,8 @@ package containerregistry
 
 import original "github.com/Azure/azure-sdk-for-go/service/containerregistry/management/2017-03-01/containerregistry"
 
+type RegistriesClient = original.RegistriesClient
+
 const (
 	DefaultBaseURI = original.DefaultBaseURI
 )
@@ -66,14 +68,7 @@ type Sku = original.Sku
 type StorageAccountParameters = original.StorageAccountParameters
 type StorageAccountProperties = original.StorageAccountProperties
 type OperationsClient = original.OperationsClient
-type RegistriesClient = original.RegistriesClient
 
-func UserAgent() string {
-	return original.UserAgent()
-}
-func Version() string {
-	return original.Version()
-}
 func New(subscriptionID string) ManagementClient {
 	return original.New(subscriptionID)
 }
@@ -91,4 +86,10 @@ func NewRegistriesClient(subscriptionID string) RegistriesClient {
 }
 func NewRegistriesClientWithBaseURI(baseURI string, subscriptionID string) RegistriesClient {
 	return original.NewRegistriesClientWithBaseURI(baseURI, subscriptionID)
+}
+func UserAgent() string {
+	return original.UserAgent()
+}
+func Version() string {
+	return original.Version()
 }

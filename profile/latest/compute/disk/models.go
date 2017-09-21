@@ -19,7 +19,7 @@
 
 package disk
 
-import original "github.com/Azure/azure-sdk-for-go/service/compute/management/2017-03-30/disk"
+import original "github.com/Azure/azure-sdk-for-go/service/compute/management/2016-04-30-preview/disk"
 
 const (
 	DefaultBaseURI = original.DefaultBaseURI
@@ -42,6 +42,7 @@ const (
 	Empty		CreateOption	= original.Empty
 	FromImage	CreateOption	= original.FromImage
 	Import		CreateOption	= original.Import
+	Restore		CreateOption	= original.Restore
 )
 
 type OperatingSystemTypes = original.OperatingSystemTypes
@@ -76,7 +77,6 @@ type OperationStatusResponse = original.OperationStatusResponse
 type Properties = original.Properties
 type Resource = original.Resource
 type ResourceUpdate = original.ResourceUpdate
-type Sku = original.Sku
 type Snapshot = original.Snapshot
 type SnapshotList = original.SnapshotList
 type SnapshotUpdate = original.SnapshotUpdate
@@ -85,12 +85,6 @@ type UpdateProperties = original.UpdateProperties
 type UpdateType = original.UpdateType
 type SnapshotsClient = original.SnapshotsClient
 
-func NewSnapshotsClient(subscriptionID string) SnapshotsClient {
-	return original.NewSnapshotsClient(subscriptionID)
-}
-func NewSnapshotsClientWithBaseURI(baseURI string, subscriptionID string) SnapshotsClient {
-	return original.NewSnapshotsClientWithBaseURI(baseURI, subscriptionID)
-}
 func UserAgent() string {
 	return original.UserAgent()
 }
@@ -108,4 +102,10 @@ func NewDisksClient(subscriptionID string) DisksClient {
 }
 func NewDisksClientWithBaseURI(baseURI string, subscriptionID string) DisksClient {
 	return original.NewDisksClientWithBaseURI(baseURI, subscriptionID)
+}
+func NewSnapshotsClient(subscriptionID string) SnapshotsClient {
+	return original.NewSnapshotsClient(subscriptionID)
+}
+func NewSnapshotsClientWithBaseURI(baseURI string, subscriptionID string) SnapshotsClient {
+	return original.NewSnapshotsClientWithBaseURI(baseURI, subscriptionID)
 }

@@ -19,7 +19,7 @@
 
 package storage
 
-import original "github.com/Azure/azure-sdk-for-go/service/storage/management/2017-06-01/storage"
+import original "github.com/Azure/azure-sdk-for-go/service/storage/management/2016-12-01/storage"
 
 type AccountsClient = original.AccountsClient
 
@@ -42,28 +42,6 @@ const (
 	Unavailable	AccountStatus	= original.Unavailable
 )
 
-type Action = original.Action
-
-const (
-	Allow Action = original.Allow
-)
-
-type Bypass = original.Bypass
-
-const (
-	AzureServices	Bypass	= original.AzureServices
-	Logging		Bypass	= original.Logging
-	Metrics		Bypass	= original.Metrics
-	None		Bypass	= original.None
-)
-
-type DefaultAction = original.DefaultAction
-
-const (
-	DefaultActionAllow	DefaultAction	= original.DefaultActionAllow
-	DefaultActionDeny	DefaultAction	= original.DefaultActionDeny
-)
-
 type HTTPProtocol = original.HTTPProtocol
 
 const (
@@ -76,13 +54,6 @@ type KeyPermission = original.KeyPermission
 const (
 	Full	KeyPermission	= original.Full
 	Read	KeyPermission	= original.Read
-)
-
-type KeySource = original.KeySource
-
-const (
-	MicrosoftKeyvault	KeySource	= original.MicrosoftKeyvault
-	MicrosoftStorage	KeySource	= original.MicrosoftStorage
 )
 
 type Kind = original.Kind
@@ -105,6 +76,19 @@ const (
 	W	Permissions	= original.W
 )
 
+type Permissions1 = original.Permissions1
+
+const (
+	Permissions1A	Permissions1	= original.Permissions1A
+	Permissions1C	Permissions1	= original.Permissions1C
+	Permissions1D	Permissions1	= original.Permissions1D
+	Permissions1L	Permissions1	= original.Permissions1L
+	Permissions1P	Permissions1	= original.Permissions1P
+	Permissions1R	Permissions1	= original.Permissions1R
+	Permissions1U	Permissions1	= original.Permissions1U
+	Permissions1W	Permissions1	= original.Permissions1W
+)
+
 type ProvisioningState = original.ProvisioningState
 
 const (
@@ -120,6 +104,23 @@ const (
 	AlreadyExists		Reason	= original.AlreadyExists
 )
 
+type ResourceEnum = original.ResourceEnum
+
+const (
+	ResourceEnumB	ResourceEnum	= original.ResourceEnumB
+	ResourceEnumC	ResourceEnum	= original.ResourceEnumC
+	ResourceEnumF	ResourceEnum	= original.ResourceEnumF
+	ResourceEnumS	ResourceEnum	= original.ResourceEnumS
+)
+
+type ResourceTypes = original.ResourceTypes
+
+const (
+	ResourceTypesC	ResourceTypes	= original.ResourceTypesC
+	ResourceTypesO	ResourceTypes	= original.ResourceTypesO
+	ResourceTypesS	ResourceTypes	= original.ResourceTypesS
+)
+
 type Services = original.Services
 
 const (
@@ -127,23 +128,6 @@ const (
 	F	Services	= original.F
 	Q	Services	= original.Q
 	T	Services	= original.T
-)
-
-type SignedResource = original.SignedResource
-
-const (
-	SignedResourceB	SignedResource	= original.SignedResourceB
-	SignedResourceC	SignedResource	= original.SignedResourceC
-	SignedResourceF	SignedResource	= original.SignedResourceF
-	SignedResourceS	SignedResource	= original.SignedResourceS
-)
-
-type SignedResourceTypes = original.SignedResourceTypes
-
-const (
-	SignedResourceTypesC	SignedResourceTypes	= original.SignedResourceTypesC
-	SignedResourceTypesO	SignedResourceTypes	= original.SignedResourceTypesO
-	SignedResourceTypesS	SignedResourceTypes	= original.SignedResourceTypesS
 )
 
 type SkuName = original.SkuName
@@ -161,16 +145,6 @@ type SkuTier = original.SkuTier
 const (
 	Premium		SkuTier	= original.Premium
 	Standard	SkuTier	= original.Standard
-)
-
-type State = original.State
-
-const (
-	StateDeprovisioning		State	= original.StateDeprovisioning
-	StateFailed			State	= original.StateFailed
-	StateNetworkSourceDeleted	State	= original.StateNetworkSourceDeleted
-	StateProvisioning		State	= original.StateProvisioning
-	StateSucceeded			State	= original.StateSucceeded
 )
 
 type UsageUnit = original.UsageUnit
@@ -198,45 +172,20 @@ type AccountSasParameters = original.AccountSasParameters
 type AccountUpdateParameters = original.AccountUpdateParameters
 type CheckNameAvailabilityResult = original.CheckNameAvailabilityResult
 type CustomDomain = original.CustomDomain
-type Dimension = original.Dimension
 type Encryption = original.Encryption
 type EncryptionService = original.EncryptionService
 type EncryptionServices = original.EncryptionServices
 type Endpoints = original.Endpoints
-type Identity = original.Identity
-type IPRule = original.IPRule
-type KeyVaultProperties = original.KeyVaultProperties
 type ListAccountSasResponse = original.ListAccountSasResponse
 type ListServiceSasResponse = original.ListServiceSasResponse
-type MetricSpecification = original.MetricSpecification
-type NetworkAcls = original.NetworkAcls
-type Operation = original.Operation
-type OperationDisplay = original.OperationDisplay
-type OperationListResult = original.OperationListResult
-type OperationProperties = original.OperationProperties
 type Resource = original.Resource
 type ServiceSasParameters = original.ServiceSasParameters
-type ServiceSpecification = original.ServiceSpecification
 type Sku = original.Sku
 type Usage = original.Usage
 type UsageListResult = original.UsageListResult
 type UsageName = original.UsageName
-type VirtualNetworkRule = original.VirtualNetworkRule
-type OperationsClient = original.OperationsClient
 type UsageClient = original.UsageClient
 
-func NewUsageClient(subscriptionID string) UsageClient {
-	return original.NewUsageClient(subscriptionID)
-}
-func NewUsageClientWithBaseURI(baseURI string, subscriptionID string) UsageClient {
-	return original.NewUsageClientWithBaseURI(baseURI, subscriptionID)
-}
-func UserAgent() string {
-	return original.UserAgent()
-}
-func Version() string {
-	return original.Version()
-}
 func NewAccountsClient(subscriptionID string) AccountsClient {
 	return original.NewAccountsClient(subscriptionID)
 }
@@ -249,9 +198,15 @@ func New(subscriptionID string) ManagementClient {
 func NewWithBaseURI(baseURI string, subscriptionID string) ManagementClient {
 	return original.NewWithBaseURI(baseURI, subscriptionID)
 }
-func NewOperationsClient(subscriptionID string) OperationsClient {
-	return original.NewOperationsClient(subscriptionID)
+func NewUsageClient(subscriptionID string) UsageClient {
+	return original.NewUsageClient(subscriptionID)
 }
-func NewOperationsClientWithBaseURI(baseURI string, subscriptionID string) OperationsClient {
-	return original.NewOperationsClientWithBaseURI(baseURI, subscriptionID)
+func NewUsageClientWithBaseURI(baseURI string, subscriptionID string) UsageClient {
+	return original.NewUsageClientWithBaseURI(baseURI, subscriptionID)
+}
+func UserAgent() string {
+	return original.UserAgent()
+}
+func Version() string {
+	return original.Version()
 }

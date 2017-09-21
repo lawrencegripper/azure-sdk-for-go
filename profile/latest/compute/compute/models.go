@@ -19,15 +19,8 @@
 
 package compute
 
-import original "github.com/Azure/azure-sdk-for-go/service/compute/management/2015-06-15/compute"
+import original "github.com/Azure/azure-sdk-for-go/service/compute/management/2016-04-30-preview/compute"
 
-type AvailabilitySetsClient = original.AvailabilitySetsClient
-
-const (
-	DefaultBaseURI = original.DefaultBaseURI
-)
-
-type ManagementClient = original.ManagementClient
 type CachingTypes = original.CachingTypes
 
 const (
@@ -56,6 +49,13 @@ const (
 	InstanceView InstanceViewTypes = original.InstanceView
 )
 
+type OperatingSystemStateTypes = original.OperatingSystemStateTypes
+
+const (
+	Generalized	OperatingSystemStateTypes	= original.Generalized
+	Specialized	OperatingSystemStateTypes	= original.Specialized
+)
+
 type OperatingSystemTypes = original.OperatingSystemTypes
 
 const (
@@ -76,6 +76,12 @@ const (
 	HTTPS	ProtocolTypes	= original.HTTPS
 )
 
+type ResourceIdentityType = original.ResourceIdentityType
+
+const (
+	SystemAssigned ResourceIdentityType = original.SystemAssigned
+)
+
 type SettingNames = original.SettingNames
 
 const (
@@ -89,6 +95,13 @@ const (
 	Error	StatusLevelTypes	= original.Error
 	Info	StatusLevelTypes	= original.Info
 	Warning	StatusLevelTypes	= original.Warning
+)
+
+type StorageAccountTypes = original.StorageAccountTypes
+
+const (
+	PremiumLRS	StorageAccountTypes	= original.PremiumLRS
+	StandardLRS	StorageAccountTypes	= original.StandardLRS
 )
 
 type UpgradeMode = original.UpgradeMode
@@ -134,6 +147,7 @@ const (
 	StandardD13V2	VirtualMachineSizeTypes	= original.StandardD13V2
 	StandardD14	VirtualMachineSizeTypes	= original.StandardD14
 	StandardD14V2	VirtualMachineSizeTypes	= original.StandardD14V2
+	StandardD15V2	VirtualMachineSizeTypes	= original.StandardD15V2
 	StandardD1V2	VirtualMachineSizeTypes	= original.StandardD1V2
 	StandardD2	VirtualMachineSizeTypes	= original.StandardD2
 	StandardD2V2	VirtualMachineSizeTypes	= original.StandardD2V2
@@ -144,12 +158,22 @@ const (
 	StandardD5V2	VirtualMachineSizeTypes	= original.StandardD5V2
 	StandardDS1	VirtualMachineSizeTypes	= original.StandardDS1
 	StandardDS11	VirtualMachineSizeTypes	= original.StandardDS11
+	StandardDS11V2	VirtualMachineSizeTypes	= original.StandardDS11V2
 	StandardDS12	VirtualMachineSizeTypes	= original.StandardDS12
+	StandardDS12V2	VirtualMachineSizeTypes	= original.StandardDS12V2
 	StandardDS13	VirtualMachineSizeTypes	= original.StandardDS13
+	StandardDS13V2	VirtualMachineSizeTypes	= original.StandardDS13V2
 	StandardDS14	VirtualMachineSizeTypes	= original.StandardDS14
+	StandardDS14V2	VirtualMachineSizeTypes	= original.StandardDS14V2
+	StandardDS15V2	VirtualMachineSizeTypes	= original.StandardDS15V2
+	StandardDS1V2	VirtualMachineSizeTypes	= original.StandardDS1V2
 	StandardDS2	VirtualMachineSizeTypes	= original.StandardDS2
+	StandardDS2V2	VirtualMachineSizeTypes	= original.StandardDS2V2
 	StandardDS3	VirtualMachineSizeTypes	= original.StandardDS3
+	StandardDS3V2	VirtualMachineSizeTypes	= original.StandardDS3V2
 	StandardDS4	VirtualMachineSizeTypes	= original.StandardDS4
+	StandardDS4V2	VirtualMachineSizeTypes	= original.StandardDS4V2
+	StandardDS5V2	VirtualMachineSizeTypes	= original.StandardDS5V2
 	StandardG1	VirtualMachineSizeTypes	= original.StandardG1
 	StandardG2	VirtualMachineSizeTypes	= original.StandardG2
 	StandardG3	VirtualMachineSizeTypes	= original.StandardG3
@@ -177,7 +201,13 @@ type DiagnosticsProfile = original.DiagnosticsProfile
 type DiskEncryptionSettings = original.DiskEncryptionSettings
 type DiskInstanceView = original.DiskInstanceView
 type HardwareProfile = original.HardwareProfile
+type Image = original.Image
+type ImageDataDisk = original.ImageDataDisk
+type ImageListResult = original.ImageListResult
+type ImageOSDisk = original.ImageOSDisk
+type ImageProperties = original.ImageProperties
 type ImageReference = original.ImageReference
+type ImageStorageProfile = original.ImageStorageProfile
 type InnerError = original.InnerError
 type InstanceViewStatus = original.InstanceViewStatus
 type KeyVaultKeyReference = original.KeyVaultKeyReference
@@ -187,6 +217,7 @@ type ListUsagesResult = original.ListUsagesResult
 type ListVirtualMachineExtensionImage = original.ListVirtualMachineExtensionImage
 type ListVirtualMachineImageResource = original.ListVirtualMachineImageResource
 type LongRunningOperationProperties = original.LongRunningOperationProperties
+type ManagedDiskParameters = original.ManagedDiskParameters
 type NetworkInterfaceReference = original.NetworkInterfaceReference
 type NetworkInterfaceReferenceProperties = original.NetworkInterfaceReferenceProperties
 type NetworkProfile = original.NetworkProfile
@@ -202,6 +233,7 @@ type SSHConfiguration = original.SSHConfiguration
 type SSHPublicKey = original.SSHPublicKey
 type StorageProfile = original.StorageProfile
 type SubResource = original.SubResource
+type SubResourceReadOnly = original.SubResourceReadOnly
 type UpgradePolicy = original.UpgradePolicy
 type Usage = original.Usage
 type UsageName = original.UsageName
@@ -219,6 +251,7 @@ type VirtualMachineExtensionImage = original.VirtualMachineExtensionImage
 type VirtualMachineExtensionImageProperties = original.VirtualMachineExtensionImageProperties
 type VirtualMachineExtensionInstanceView = original.VirtualMachineExtensionInstanceView
 type VirtualMachineExtensionProperties = original.VirtualMachineExtensionProperties
+type VirtualMachineIdentity = original.VirtualMachineIdentity
 type VirtualMachineImage = original.VirtualMachineImage
 type VirtualMachineImageProperties = original.VirtualMachineImageProperties
 type VirtualMachineImageResource = original.VirtualMachineImageResource
@@ -226,9 +259,11 @@ type VirtualMachineInstanceView = original.VirtualMachineInstanceView
 type VirtualMachineListResult = original.VirtualMachineListResult
 type VirtualMachineProperties = original.VirtualMachineProperties
 type VirtualMachineScaleSet = original.VirtualMachineScaleSet
+type VirtualMachineScaleSetDataDisk = original.VirtualMachineScaleSetDataDisk
 type VirtualMachineScaleSetExtension = original.VirtualMachineScaleSetExtension
 type VirtualMachineScaleSetExtensionProfile = original.VirtualMachineScaleSetExtensionProfile
 type VirtualMachineScaleSetExtensionProperties = original.VirtualMachineScaleSetExtensionProperties
+type VirtualMachineScaleSetIdentity = original.VirtualMachineScaleSetIdentity
 type VirtualMachineScaleSetInstanceView = original.VirtualMachineScaleSetInstanceView
 type VirtualMachineScaleSetInstanceViewStatusesSummary = original.VirtualMachineScaleSetInstanceViewStatusesSummary
 type VirtualMachineScaleSetIPConfiguration = original.VirtualMachineScaleSetIPConfiguration
@@ -236,6 +271,7 @@ type VirtualMachineScaleSetIPConfigurationProperties = original.VirtualMachineSc
 type VirtualMachineScaleSetListResult = original.VirtualMachineScaleSetListResult
 type VirtualMachineScaleSetListSkusResult = original.VirtualMachineScaleSetListSkusResult
 type VirtualMachineScaleSetListWithLinkResult = original.VirtualMachineScaleSetListWithLinkResult
+type VirtualMachineScaleSetManagedDiskParameters = original.VirtualMachineScaleSetManagedDiskParameters
 type VirtualMachineScaleSetNetworkConfiguration = original.VirtualMachineScaleSetNetworkConfiguration
 type VirtualMachineScaleSetNetworkConfigurationProperties = original.VirtualMachineScaleSetNetworkConfigurationProperties
 type VirtualMachineScaleSetNetworkProfile = original.VirtualMachineScaleSetNetworkProfile
@@ -259,44 +295,34 @@ type VirtualMachineStatusCodeCount = original.VirtualMachineStatusCodeCount
 type WindowsConfiguration = original.WindowsConfiguration
 type WinRMConfiguration = original.WinRMConfiguration
 type WinRMListener = original.WinRMListener
-type VirtualMachineScaleSetVMsClient = original.VirtualMachineScaleSetVMsClient
-type VirtualMachineSizesClient = original.VirtualMachineSizesClient
-type UsageClient = original.UsageClient
-type VirtualMachineExtensionImagesClient = original.VirtualMachineExtensionImagesClient
 type VirtualMachineExtensionsClient = original.VirtualMachineExtensionsClient
-type VirtualMachineImagesClient = original.VirtualMachineImagesClient
 type VirtualMachinesClient = original.VirtualMachinesClient
 type VirtualMachineScaleSetsClient = original.VirtualMachineScaleSetsClient
+type VirtualMachineScaleSetVMsClient = original.VirtualMachineScaleSetVMsClient
+type AvailabilitySetsClient = original.AvailabilitySetsClient
+type ImagesClient = original.ImagesClient
+type VirtualMachineExtensionImagesClient = original.VirtualMachineExtensionImagesClient
+type VirtualMachineImagesClient = original.VirtualMachineImagesClient
+type VirtualMachineSizesClient = original.VirtualMachineSizesClient
 
-func NewUsageClient(subscriptionID string) UsageClient {
-	return original.NewUsageClient(subscriptionID)
-}
-func NewUsageClientWithBaseURI(baseURI string, subscriptionID string) UsageClient {
-	return original.NewUsageClientWithBaseURI(baseURI, subscriptionID)
-}
+const (
+	DefaultBaseURI = original.DefaultBaseURI
+)
+
+type ManagementClient = original.ManagementClient
+type UsageClient = original.UsageClient
+
 func UserAgent() string {
 	return original.UserAgent()
 }
 func Version() string {
 	return original.Version()
 }
-func NewVirtualMachineExtensionImagesClient(subscriptionID string) VirtualMachineExtensionImagesClient {
-	return original.NewVirtualMachineExtensionImagesClient(subscriptionID)
-}
-func NewVirtualMachineExtensionImagesClientWithBaseURI(baseURI string, subscriptionID string) VirtualMachineExtensionImagesClient {
-	return original.NewVirtualMachineExtensionImagesClientWithBaseURI(baseURI, subscriptionID)
-}
 func NewVirtualMachineExtensionsClient(subscriptionID string) VirtualMachineExtensionsClient {
 	return original.NewVirtualMachineExtensionsClient(subscriptionID)
 }
 func NewVirtualMachineExtensionsClientWithBaseURI(baseURI string, subscriptionID string) VirtualMachineExtensionsClient {
 	return original.NewVirtualMachineExtensionsClientWithBaseURI(baseURI, subscriptionID)
-}
-func NewVirtualMachineImagesClient(subscriptionID string) VirtualMachineImagesClient {
-	return original.NewVirtualMachineImagesClient(subscriptionID)
-}
-func NewVirtualMachineImagesClientWithBaseURI(baseURI string, subscriptionID string) VirtualMachineImagesClient {
-	return original.NewVirtualMachineImagesClientWithBaseURI(baseURI, subscriptionID)
 }
 func NewVirtualMachinesClient(subscriptionID string) VirtualMachinesClient {
 	return original.NewVirtualMachinesClient(subscriptionID)
@@ -310,11 +336,41 @@ func NewVirtualMachineScaleSetsClient(subscriptionID string) VirtualMachineScale
 func NewVirtualMachineScaleSetsClientWithBaseURI(baseURI string, subscriptionID string) VirtualMachineScaleSetsClient {
 	return original.NewVirtualMachineScaleSetsClientWithBaseURI(baseURI, subscriptionID)
 }
+func NewVirtualMachineScaleSetVMsClient(subscriptionID string) VirtualMachineScaleSetVMsClient {
+	return original.NewVirtualMachineScaleSetVMsClient(subscriptionID)
+}
+func NewVirtualMachineScaleSetVMsClientWithBaseURI(baseURI string, subscriptionID string) VirtualMachineScaleSetVMsClient {
+	return original.NewVirtualMachineScaleSetVMsClientWithBaseURI(baseURI, subscriptionID)
+}
 func NewAvailabilitySetsClient(subscriptionID string) AvailabilitySetsClient {
 	return original.NewAvailabilitySetsClient(subscriptionID)
 }
 func NewAvailabilitySetsClientWithBaseURI(baseURI string, subscriptionID string) AvailabilitySetsClient {
 	return original.NewAvailabilitySetsClientWithBaseURI(baseURI, subscriptionID)
+}
+func NewImagesClient(subscriptionID string) ImagesClient {
+	return original.NewImagesClient(subscriptionID)
+}
+func NewImagesClientWithBaseURI(baseURI string, subscriptionID string) ImagesClient {
+	return original.NewImagesClientWithBaseURI(baseURI, subscriptionID)
+}
+func NewVirtualMachineExtensionImagesClient(subscriptionID string) VirtualMachineExtensionImagesClient {
+	return original.NewVirtualMachineExtensionImagesClient(subscriptionID)
+}
+func NewVirtualMachineExtensionImagesClientWithBaseURI(baseURI string, subscriptionID string) VirtualMachineExtensionImagesClient {
+	return original.NewVirtualMachineExtensionImagesClientWithBaseURI(baseURI, subscriptionID)
+}
+func NewVirtualMachineImagesClient(subscriptionID string) VirtualMachineImagesClient {
+	return original.NewVirtualMachineImagesClient(subscriptionID)
+}
+func NewVirtualMachineImagesClientWithBaseURI(baseURI string, subscriptionID string) VirtualMachineImagesClient {
+	return original.NewVirtualMachineImagesClientWithBaseURI(baseURI, subscriptionID)
+}
+func NewVirtualMachineSizesClient(subscriptionID string) VirtualMachineSizesClient {
+	return original.NewVirtualMachineSizesClient(subscriptionID)
+}
+func NewVirtualMachineSizesClientWithBaseURI(baseURI string, subscriptionID string) VirtualMachineSizesClient {
+	return original.NewVirtualMachineSizesClientWithBaseURI(baseURI, subscriptionID)
 }
 func New(subscriptionID string) ManagementClient {
 	return original.New(subscriptionID)
@@ -322,15 +378,9 @@ func New(subscriptionID string) ManagementClient {
 func NewWithBaseURI(baseURI string, subscriptionID string) ManagementClient {
 	return original.NewWithBaseURI(baseURI, subscriptionID)
 }
-func NewVirtualMachineScaleSetVMsClient(subscriptionID string) VirtualMachineScaleSetVMsClient {
-	return original.NewVirtualMachineScaleSetVMsClient(subscriptionID)
+func NewUsageClient(subscriptionID string) UsageClient {
+	return original.NewUsageClient(subscriptionID)
 }
-func NewVirtualMachineScaleSetVMsClientWithBaseURI(baseURI string, subscriptionID string) VirtualMachineScaleSetVMsClient {
-	return original.NewVirtualMachineScaleSetVMsClientWithBaseURI(baseURI, subscriptionID)
-}
-func NewVirtualMachineSizesClient(subscriptionID string) VirtualMachineSizesClient {
-	return original.NewVirtualMachineSizesClient(subscriptionID)
-}
-func NewVirtualMachineSizesClientWithBaseURI(baseURI string, subscriptionID string) VirtualMachineSizesClient {
-	return original.NewVirtualMachineSizesClientWithBaseURI(baseURI, subscriptionID)
+func NewUsageClientWithBaseURI(baseURI string, subscriptionID string) UsageClient {
+	return original.NewUsageClientWithBaseURI(baseURI, subscriptionID)
 }
