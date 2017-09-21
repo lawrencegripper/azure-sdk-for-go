@@ -41,7 +41,7 @@ var (
 	profileName     string
 	outputLocation  string
 	inputRoot       string
-	inputList       io.Reader
+	inputList       io.ReadSeeker
 	packageStrategy collection.Enumerable
 	outputLog       *log.Logger
 	errLog          *log.Logger
@@ -262,7 +262,7 @@ func init() {
 	}
 
 	wellKnownStrategies := map[WellKnownStrategy]collection.Enumerable{
-		WellKnownStrategyList:    ListStrategy{Reader: inputList},
+		WellKnownStrategyList:    ListStrategy{ReadSeeker: inputList},
 		WellKnownStrategyLatest:  LatestStrategy{Root: inputRoot, Predicate: IgnorePreview},
 		WellKnownStrategyPreview: LatestStrategy{Root: inputRoot, Predicate: AcceptAll},
 	}

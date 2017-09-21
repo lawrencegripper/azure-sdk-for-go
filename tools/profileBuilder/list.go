@@ -23,7 +23,7 @@ import (
 
 // ListStrategy allows a mechanism for a list of packages that should be included in a profile.
 type ListStrategy struct {
-	io.Reader
+	io.ReadSeeker
 }
 
 // Enumerate reads a new line delimited list of packages names relative to $GOPATH
@@ -33,20 +33,24 @@ func (list ListStrategy) Enumerate(cancel <-chan struct{}) collection.Enumerator
 	go func() {
 		defer close(results)
 
-		var currentLine string
-		for _, err := fmt.Fscanln(list, &currentLine); err == nil; {
-			if err != nil {
-				continue
-			}
-
+		for {
 			select {
-			case results <- currentLine:
-				// Intentionally Left Blank
-			case <-cancel:
-				return
+			case _ = <-cancel:
+			default:
+				//Not cancelled
 			}
-		}
-	}()
 
+			var line string
+			var n int
+			n, err := fmt.Fscanln(list, &line)
+			if n == 0 || err != nil {
+				fmt.Println(err)
+				break
+			}
+
+			results <- line
+		}
+		list.Seek(0, 0)
+	}()
 	return results
 }
